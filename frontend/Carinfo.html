@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Vehicle Info Entry Page</title>
+    <link rel="stylesheet" href="CarInfo.css">
+</head>
+<body>
+    <div class="header">
+        <a href="index.html"><img src="Logo.png" alt="logo" class="Logo" width="55px" height="60px"></a>
+        <div class="search-container">
+            <!-- Search bar form -->
+            <form class="searchBar">
+                <input type="text" placeholder="Search our services..." name="search">
+            </form>
+        </div>
+        <div class="contact">
+            <i class="fa fa-phone" aria-hidden="true"></i> +91 7696211019  
+        </div>        
+        <div class="mail">
+            <i class="fa fa-envelope" aria-hidden="true"></i> spms@semantix.in
+        </div>        
+        <div class="support">
+            <i class="fa fa-user" aria-hidden="true"></i> <a href="#" style="text-decoration: none; color:black">Support</a> 
+        </div>        
+        <div class="follow">
+            <a href="https://www.instagram.com/spotify" class="social-icons" target="_blank"><img src="Facebook.jpg" alt="relateable image"></a>
+            <a href="https://twitter.com/spotify" class="social-icons" target="_blank"><img src="Instagram.jpg" alt="relateable image"></a>
+            <a href="https://www.facebook.com/SpotifyIndia/?brand_redir=6243987495" class="social-icons" target="_blank"><img src="Twitter.jpg" alt="relateable image"></a>
+        </div>  
+        </div>
+
+    <div class="SecondHeader">
+        <nav>
+            <div class="brand">
+                <h1>S<span style="color: rgb(48, 124, 255);">SPMS</span></h1>
+            </div>
+            
+        </nav>
+    </div>
+    <div class="Vehicle-Info">
+        <h1>Enter Vehicle Info</h1>
+        <form action="#" method="POST" id="surveyform">
+			<label for="name"></label>
+			<input type="text" id="name" name="name" placeholder="Vehicle Owner's Name" required>
+
+            
+			<label for="plate-number"></label>
+            <input type="tel" id="plate-number" name="plate-number" placeholder="Plate Number" maxlength="10">
+            <label for="booking-duration"></label>
+            <select id="booking-duration" name="booking-duration" required >
+                <option value="" disabled selected>Select booking duration</option>
+                <option value="1">1 Hour</option>
+                <option value="120">2 Hours</option>
+                <option value="480">4 Hours</option>
+                <option value="720">6 Hours</option>
+                <option value="1440">12 Hours</option>
+                <option value="2880">1 Day</option>
+            </select>
+
+			<br/>
+			<br/>
+
+            <div class="Submit">
+                <button id="button"><a href="#" style="text-decoration:none; color:white;"><b>Submit</b></a></button>
+            </div>
+            <div id="booking-details" class="mt-4"></div>
+
+
+		</form>
+        
+    </div>
+
+    
+
+    <div class="main-footer">
+        <footer>
+            <table class="footer">
+                <thead>
+                    <tr style="color:#3c6dff" >
+                        <th>Company</th>
+                        <th>Communities</th>
+                        <th>Useful links</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a id="footerlink1" href="#" class="nav_a">About Us</a>
+                            <br/>
+                            <a id="footerlink2" href="#" class="nav_a">Privacy-Policy</a>
+                            <br/>
+                        </td>
+                        <td>
+                            <a id="footerlink3" href="#" class="nav_a">Developers</a>
+                            <br/>
+                            <a id="footerlink4" href="#" class="nav_a">Advertising</a>
+                            <br/>
+                            <a id="footerlink5" href="#" class="nav_a">Investors</a>
+                            <br/>
+                            <a id="footerlink6" href="#" class="nav_a">Vendors</a>
+                            <br/>
+                        </td>
+                        <td>
+                            <a id="footerlink7" href="#" class="nav_a">Support</a>
+                            <br/>
+                            <a id="footerlink8" href="#" class="nav_a">App</a>
+                            <br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="final-footer" style="color:#3c6dff">
+                <h4>© 2024 SSPMS</h4>
+            </div>
+        </footer>           
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('surveyform');
+    const bookingDetailsDiv = document.getElementById('booking-details');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+
+        const pricePerMinute = 2; 
+        // Fetch current slot number
+        fetch('http://localhost:4040/api/v1/smart')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                let slotno;
+
+                if (data && data.data && Array.isArray(data.data.smarts)) {
+                    slotno = data.data.smarts.length + 1;
+                } else {
+                    slotno = 1; 
+                }
+
+                const name = document.getElementById('name').value;
+                const carno = document.getElementById('plate-number').value;
+                const duration = parseInt(document.getElementById('booking-duration').value);
+
+                const currentTime = new Date();
+                const expiryTime = new Date(currentTime.getTime() + duration * 60 * 1000); 
+                const totalPrice = duration * pricePerMinute;
+
+                bookingDetailsDiv.innerHTML = `
+                    <h3>Booking Details</h3>
+                    <p><strong>Vehicle Owner:</strong> ${name}</p>
+                    <p><strong>Plate Number:</strong> ${carno}</p>
+                    <p><strong>Slot Number:</strong> ${slotno}</p>
+                    <p><strong>Booking Duration:</strong> ${duration} minutes</p>
+                    <p><strong>Total Price:</strong> ₹${totalPrice}</p>
+                    <p><strong>Expiry Time:</strong> ${expiryTime.toLocaleString()}</p>
+                `;
+
+                if (slotno) {
+                    return fetch('http://localhost:4040/api/v1/smart/createInfo', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ name, carno, slotno, expiryTime, totalPrice })
+                    });
+                } else {
+                    throw new Error('Slot number is invalid');
+                }
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log('Server response:', data); 
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+});
+
+        </script>
+        
+</body>
+</html>

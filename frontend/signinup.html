@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>SemantiX Parking System</title>
+    <link rel="stylesheet" href="sign.css">
+</head>
+<body>
+    <div class="header">
+        <a href="index.html"><img src="Logo.png" alt="logo" class="Logo" width="55px" height="60px"></a>
+        <div class="search-container">
+            <!-- Search bar form -->
+            <form class="searchBar">
+                <input type="text" placeholder="Search our services..." name="search">
+            </form>
+        </div>
+        <div class="contact">
+            <i class="fa fa-phone" aria-hidden="true"></i> +91 7696211019  
+        </div>        
+        <div class="mail">
+            <i class="fa fa-envelope" aria-hidden="true"></i> spms@semantix.in
+        </div>        
+        <div class="support">
+            <i class="fa fa-user" aria-hidden="true"></i> <a href="#" style="text-decoration: none; color:black">Support</a> 
+        </div>        
+        <div class="follow">
+            <a href="https://www.instagram.com/spotify" class="social-icons" target="_blank"><img src="Facebook.jpg" alt="relateable image"></a>
+            <a href="https://twitter.com/spotify" class="social-icons" target="_blank"><img src="Instagram.jpg" alt="relateable image"></a>
+            <a href="https://www.facebook.com/SpotifyIndia/?brand_redir=6243987495" class="social-icons" target="_blank"><img src="Twitter.jpg" alt="relateable image"></a>
+        </div>  
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <ul class="hamburger-dropdown">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="Contact.html">Contact Us</a></li>
+                <li><a href="signinup.html">Sign In/Up</a></li>
+                <li>
+                    <i class="fa fa-phone" aria-hidden="true"></i> +91 7696211019
+                </li>
+                <li>
+                    <i class="fa fa-envelope" aria-hidden="true"></i> spms@semantix.in
+                </li>
+                <li>
+                    <i class="fa fa-user" aria-hidden="true"></i> <a href="#" style="text-decoration: none; color:black">Support</a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/" class="social-icons" target="_blank"><img src="Facebook.jpg" alt="relateable image"></a>
+            <a href="https://www.instagram.com/" class="social-icons" target="_blank"><img src="Instagram.jpg" alt="relateable image"></a>
+            <a href="https://www.twitter.com/" class="social-icons" target="_blank"><img src="Twitter.jpg" alt="relateable image"></a>
+                </li>
+            </ul>
+        </div>        
+    </div>
+
+    <div class="SecondHeader">
+        <nav>
+            <div class="brand">
+                <h1>S<span style="color: rgb(48, 124, 255);">SPMS</span></h1>
+            </div>
+            <div class="navlink">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="Contact.html">Contact Us</a></li>
+                    <li><a href="signinup.html">Sign In/Up</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="main">
+        <div  class="container forms">
+            <div class="form login">
+                <div class="signin_signup">
+                    <button class="signin" id="signin"><a href="signinup.html" style="text-decoration:none; color:white;">Sign In</a></button>
+                    <button class="signup" id="signup"><a href="signup.html" style="text-decoration:none; color:rgb(0, 0, 0);">Sign Up</a></button>
+                </div>
+                <div class="form-content">
+                    <h1>Welcome Back</h1>
+                    <form action="#">
+                        <div class="form-group">
+                        <i class=" fa-solid fa-envelope"></i>
+                        <input type="text" id="eml1" name="email" placeholder="Enter email"> <br>
+                    </div>
+                        <div class="form-group">
+                        <i class=" fa-solid fa-lock"></i>
+                        <input type="text" name="psw" id="password1" placeholder="Enter password"> <br>
+                    </div>
+                        <div class="form-link">
+                            <a href="#" class="forgot-pass" id="forgot-pass1">Forgot Password</a>
+                        </div>
+                        <!-- 
+                        <div class="form-link">
+                            <span>Do not have an account? <a href="signup.html" class="signup-link" id="signup-link"> Sign Up</a></span>
+                        </div>    
+                        -->
+                        
+                        <div class="form-group">
+                        <button type="submit" id="login">Login</button>
+                    </div>
+                    
+                    </form>
+
+
+                </div>
+            </div>
+
+            <!--signup-->
+            <!--
+                <div class="form signup">
+                <div class="form-content">
+                    <h1>Sign Up</h1>
+                    <form action="#">
+                        <div class="form-group">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="usr" name="usernam" placeholder="Enter Username"> <br>
+                    </div>
+                    <div class="form-group">
+                    <i class=" fa-solid fa-envelope"></i>
+                        <input type="text" id="eml2" name="email" placeholder="Enter email"> <br>
+                    </div>
+                        <div class="form-group">
+                        <i class=" fa-solid fa-lock"></i>
+                        <input type="text" name="psw" id="password2" placeholder="Enter password"> <br>
+                    </div>
+                    <div class="form-group">
+                        <i class=" fa-solid fa-lock"></i>
+                        <input type="text" name="conf-psw" id="confirm-password" placeholder="Confirm  password"> <br>
+                    </div>
+                        
+                        
+                        <div class="form-group">
+                        <button type="submit" id="signup-button">Sign up</button>
+                    </div>
+                    <div class="form-link">
+                        <p>Or</p>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="sign-in-with-google"> <i class="fa-brands fa-google"></i>Sign in with Google</button>
+                </div>
+                    <div class="form-link">
+                        <span>Already have an account? <a href="#" class="forgot-pass" id="login-link"> Login</a></span>
+                    </div>                
+                    </form>
+                </div>
+            </div>
+            -->
+
+            
+        </div>
+    </div>
+    <div class="preview">
+        <div class="para">
+            <h1><b>Ready to find out more?</b></h1>
+            <h3>Drop a message.  We'll make sure your time is well spent.</h3>
+        </div>
+        <div class="Contact">
+            <button id="btn"><a href="Contact.html" style="color: rgb(0, 0, 0); text-decoration:none"><b>Contact Us</b></a></button>
+        </div>
+    </div>
+
+    <div class="main-footer">
+        <footer>
+            <table class="footer">
+                <thead>
+                    <tr style="color:#3c6dff" >
+                        <th>Company</th>
+                        <th>Communities</th>
+                        <th>Useful links</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a id="footerlink1" href="#" class="nav_a">About Us</a>
+                            <br/>
+                            <a id="footerlink2" href="#" class="nav_a">Privacy-Policy</a>
+                            <br/>
+                        </td>
+                        <td>
+                            <a id="footerlink3" href="#" class="nav_a">Developers</a>
+                            <br/>
+                            <a id="footerlink4" href="#" class="nav_a">Advertising</a>
+                            <br/>
+                            <a id="footerlink5" href="#" class="nav_a">Investors</a>
+                            <br/>
+                            <a id="footerlink6" href="#" class="nav_a">Vendors</a>
+                            <br/>
+                        </td>
+                        <td>
+                            <a id="footerlink7" href="#" class="nav_a">Support</a>
+                            <br/>
+                            <a id="footerlink8" href="#" class="nav_a">App</a>
+                            <br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="final-footer" style="color:#3c6dff">
+                <h4>© 2024 SSPMS</h4>
+            </div>
+        </footer>           
+    </div>
+    <script src="your-script.js"></script>
+                  
+</body>
+</html>

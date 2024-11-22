@@ -1,0 +1,405 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.header{
+    background-color: rgb(81, 145, 255);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.search-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
+
+.searchBar {
+    display: flex;
+    flex-grow: .3;
+}
+
+.searchBar input[type="text"] {
+    color: #000000;
+    padding-inline-end: 5px;
+    padding-inline-start: 5px;
+    padding-block: 9.6px;
+    background: rgb(183, 209, 255);
+    margin-right: 10px;
+    border-radius: 20px;
+    border-style: none;
+    font-size: 16px;
+    flex-grow: 1; 
+    width: 100%;
+}
+
+#search2{
+    padding: 10px;
+    color: #000000;
+    margin-right: 10px;
+}
+
+#search2:hover{
+    padding: 10px;
+    color: #000000;
+    margin-right: 10px;
+}
+
+.contact{
+    margin-right: 20px;
+}
+
+.mail{
+    margin-right: 20px;
+}
+
+.support{
+    margin-right: 20px;
+}
+
+.follow{
+    margin-right: 20px;
+}
+
+.social-icons img{
+    width:25px;
+    height:25px;
+}
+
+/* Hamburger Menu and Dropdown */
+.hamburger-menu {
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px; 
+    height: 25px; 
+    cursor: pointer;
+    z-index: 1000; 
+}
+
+.bar {
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.hamburger-dropdown {
+    display: none; 
+    position: absolute;
+    right: 10px;
+    top: 60px; 
+    background-color: rgb(81, 145, 255);
+    border-radius: 5px;
+    padding: 10px; 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); 
+    width: 200px; 
+    max-height: 800px; 
+    overflow-y: auto; 
+}
+
+.hamburger-dropdown.show {
+    display: block; 
+}
+
+.hamburger-dropdown li {
+    list-style: none;
+    padding-inline: 10px; 
+    padding-block: 17px; 
+    border-bottom: 1px solid white;
+}
+
+.hamburger-dropdown li:last-child {
+    border-bottom: none;
+}
+
+.hamburger-dropdown li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+.hamburger-dropdown li a:hover{
+    color: white;
+}
+
+.SecondHeader{    
+    width: 100%;
+}
+
+nav{
+    background-color: white;
+    height: 35px;
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: 0;
+}
+
+.brand{
+    padding-top: 5px;
+    padding-left: 10px;
+    font-size: 1.5em;
+    float: left;
+}
+
+.navlink li a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    position: relative;
+    display: inline-block; 
+    overflow: hidden; 
+}
+
+.navlink li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%; 
+    height: 2px; 
+    background-color: rgb(48, 124, 255); 
+    transition: width 0.5s ease; 
+}
+
+.navlink li{
+    list-style-type: none;
+    display: inline;
+    margin-left: 1em;
+}
+
+.navlink li a:hover{
+    color: rgb(48, 124, 255);
+}
+
+.navlink li a:hover::after {
+    width: 100%; 
+}
+
+.navlink{
+    text-align: right;
+    padding-inline: .5em;
+    padding-block: 15px;
+}
+
+@media screen and (max-width: 900px) {
+
+    .follow .social-icons img{
+    display: none;
+    }
+
+    .support {
+        display: none;
+    }
+
+    .contact{
+        display: none;
+    }
+
+    .header{
+        padding-left: 5px;
+    }
+
+    .mail{
+        display: none;
+    }
+    .navlink{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .hamburger-menu, .bar, .hamburger-dropdown, .hamburger-dropdown.show{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .brand{
+        font-size: 20px;
+    }
+}
+
+
+.heading{
+    font-size: 50px;
+    text-align: center;
+    font-weight:bold;
+}
+.container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+}
+.col1{
+    width:400px;
+    height:350px;
+    margin-left: 10px;
+    background-color:white;
+    color: rgb(80, 172, 229);
+    
+}
+.col1 i{
+    color: black;
+    
+
+}
+.col1 h1{
+    text-decoration: underline;
+    text-decoration-style: solid; /* Set underline style to solid */
+  text-decoration-color:rgb(80, 172, 229); 
+  text-decoration-thickness: 1px
+}
+.col1 p{
+    color: black;
+}
+.col1 ul li:hover{
+    color:white;
+
+}
+.col2{
+    width:400px;
+    height:350px;
+    margin-left: 10px;
+    background-color:white;
+    color: rgb(80, 172, 229);
+    
+}
+.col2 i{
+    color: black;
+    
+
+}
+.col2 h1{
+    text-decoration: underline;
+    text-decoration-style: solid; /* Set underline style to solid */
+  text-decoration-color:rgb(80, 172, 229); /* Set underline color to black */
+  text-decoration-thickness: 1px
+}
+.col2 p{
+    color: black;
+}
+.col2 ul li:hover{
+    color:white;
+
+}
+.col3{
+    width:400px;
+    height:350px;
+    margin-left: 10px;
+    background-color:white;
+    color: rgb(80, 172, 229);
+    
+}
+.col3 i{
+    color: black;
+    
+
+}
+.col3 h1{
+    text-decoration: underline;
+    text-decoration-style: solid; /* Set underline style to solid */
+  text-decoration-color:rgb(80, 172, 229); /* Set underline color to black */
+  text-decoration-thickness: 1px
+}
+.col3 p{
+    color: black;
+}
+.col3 ul li:hover{
+    color:white;
+
+}
+
+.main-footer, .footer{
+    background-color: #f0f0f0;
+}
+
+table {
+	border:none;
+    background-color: #f0f0f0;
+	width: 80%;
+	text-align: left;
+}
+  
+th{
+	font-size:16px;
+	text-align: left;
+	vertical-align: top;
+	padding-inline: 40px;
+    color: black;
+}
+
+td{
+	font-size:14px;
+	text-align: left;
+	vertical-align: top;
+	padding-inline: 40px;
+}
+
+td a{
+    text-decoration: none;
+    color: rgb(47, 47, 47);
+}
+
+td a:hover{
+    text-decoration: underline;
+    color: rgb(16, 49, 107);
+}
+
+.final-footer{
+    border-top: #383838 solid;
+    padding-left: 70px;
+    padding-top: 20px ;
+    padding-bottom: 100px ;
+}
+
+.final-footer h4{
+    font-size: medium;
+}
+
+@media screen and (max-width: 600px) {
+    .preview{
+        padding-inline: 50px;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    table{
+        margin: 10px;
+    }
+
+    th, td{
+        padding-inline: 20px;
+    }
+    .preview{
+        padding-inline: 40px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    th, td{
+        padding-inline: 15px;
+    }
+}
+
+@media screen and (max-width: 341px) {
+    th{
+        display: none;
+    }
+}
+

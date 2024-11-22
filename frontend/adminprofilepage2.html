@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>SemantiX Parking System</title>
+    <link rel="stylesheet" href="adminprofilepage.css">
+</head>
+<body>
+    <div class="header">
+        <a href="index.html"><img src="Logo.png" alt="logo" class="Logo" width="55px" height="60px"></a>
+        <div class="search-container">
+            <!-- Search bar form -->
+            <form class="searchBar">
+                <input type="text" placeholder="Search our services..." name="search">
+            </form>
+        </div>
+        <div class="contact">
+            <i class="fa fa-phone" aria-hidden="true"></i> +91 7696211019  
+        </div>        
+        <div class="mail">
+            <i class="fa fa-envelope" aria-hidden="true"></i> spms@semantix.in
+        </div>        
+        <div class="support">
+            <i class="fa fa-user" aria-hidden="true"></i> <a href="#" style="text-decoration: none; color:black">Support</a> 
+        </div>        
+        <div class="follow">
+            <a href="https://www.instagram.com/spotify" class="social-icons" target="_blank"><img src="Facebook.jpg" alt="relateable image"></a>
+            <a href="https://twitter.com/spotify" class="social-icons" target="_blank"><img src="Instagram.jpg" alt="relateable image"></a>
+            <a href="https://www.facebook.com/SpotifyIndia/?brand_redir=6243987495" class="social-icons" target="_blank"><img src="Twitter.jpg" alt="relateable image"></a>
+        </div>  
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <ul class="hamburger-dropdown">
+                <li><a href="Carinfo.html">Vehicle Info</a></li>
+            </ul>
+
+        </div>        
+    </div>
+
+    <div class="SecondHeader">
+        <nav>
+            <div class="brand">
+                <h1>S<span style="color: rgb(48, 124, 255);">SPMS</span></h1>
+            </div>
+            <div class="navlink">
+                <ul>
+                    <li><a href="Carinfo.html">Vehicle Info</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--mine------------------------------------------------------------------------------------------>
+    <div class="admin-container">
+        <div class="main1">
+            <div class="profile">
+                <img src="Argha.png">
+                <h1 class="name">Arghadeep Nath</h1>
+                <p class="info" >Phone Number: 9034216331</p>
+                <p class="info" >Email: arghadeep152.be22@chitkara.edu.in</p>
+            </div>
+        </div>
+
+        
+
+
+        <div class="main3">
+            <h1 class="heading">Bookings</h1>
+            <input type="text" id="searchBar" placeholder="Search by booking ID, name, or car number">
+            <div class="notat">
+                <div id="data-container"></div>
+            </div>
+            <div class="scrollbox" id="bookingScrollbox"></div>
+        </div>
+        
+
+    <!--mine------------------------------------------------------------------------------------------>
+
+        
+    </div>
+    
+    <div class="preview">
+        <div class="para">
+            <h1><b>Ready to find out more?</b></h1>
+            <h3>Drop a message.  We'll make sure your time is well spent.</h3>
+        </div>
+        <div class="Contact">
+            <button id="btn"><a href="Contact.html" style="color: rgb(0, 0, 0); text-decoration:none"><b>Contact Us</b></a></button>
+        </div>
+    </div>
+
+    <div class="main-footer">
+        <footer>
+            <table class="footer">
+                <thead>
+                    <tr style="color:#3c6dff" >
+                        <th>Company</th>
+                        <th>Communities</th>
+                        <th>Useful links</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a id="footerlink1" href="#" class="nav_a">About Us</a>
+                            <br/>
+                            <a id="footerlink2" href="#" class="nav_a">Privacy-Policy</a>
+                            <br/>
+                        </td>
+                        <td>
+                            <a id="footerlink3" href="#" class="nav_a">Developers</a>
+                            <br/>
+                            <a id="footerlink4" href="#" class="nav_a">Advertising</a>
+                            <br/>
+                            <a id="footerlink5" href="#" class="nav_a">Investors</a>
+                            <br/>
+                            <a id="footerlink6" href="#" class="nav_a">Vendors</a>
+                            <br/>
+                        </td>
+                        <td>
+                            <a id="footerlink7" href="#" class="nav_a">Support</a>
+                            <br/>
+                            <a id="footerlink8" href="#" class="nav_a">App</a>
+                            <br/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="final-footer" style="color:#3c6dff">
+                <h4>© 2024 SSPMS</h4>
+            </div>
+        </footer>           
+    </div>
+   
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburger = document.querySelector('.hamburger-menu');
+            const dropdown = document.querySelector('.hamburger-dropdown');
+        
+            hamburger.addEventListener('click', function () {
+                dropdown.classList.toggle('show');
+            });
+        
+            window.addEventListener('click', function (e) {
+                if (!hamburger.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        });
+
+        //mine bookings database-----------------------------------------------------------------------------------------------
+        document.addEventListener('DOMContentLoaded', function() {
+    const dataContainer = document.querySelector('#bookingScrollbox');
+    const searchBar = document.querySelector('#searchBar');
+    let bookings = []; // To store the fetched bookings
+
+    // Fetch bookings from the API
+    fetch('http://localhost:4040/api/v1/smart')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (Array.isArray(data.data.smarts)) {
+                bookings = data.data.smarts;
+                console.log('Fetched bookings:', bookings); // Debugging
+                displayBookings(bookings);
+            } else {
+                console.error('Expected an array but got:', data.data.smarts);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+
+    // Function to display bookings
+    function displayBookings(bookings) {
+        dataContainer.innerHTML = ''; // Clear the container
+        bookings.forEach(item => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.innerHTML = `
+                <p>Slot No: ${item.slotno || 'N/A'}</p>
+                <p>Car No: ${item.carno || 'N/A'}</p>
+                <p>Name: ${item.name || 'N/A'}</p>
+            `;
+            dataContainer.appendChild(card);
+        });
+    }
+
+    // Event listener for the search bar
+    searchBar.addEventListener('input', function() {
+        const query = searchBar.value; // No toLowerCase()
+        const filteredBookings = bookings.filter(booking => {
+            // Convert each property to string to avoid errors
+            const slotno = String(booking.slotno || '');
+            const carno = String(booking.carno || '');
+            const name = String(booking.name || '');
+            return slotno.includes(query) ||
+                   carno.includes(query) ||
+                   name.includes(query);
+        });
+        console.log('Filtered bookings:', filteredBookings); // Debugging
+        displayBookings(filteredBookings);
+    });
+});
+
+
+
+        //mine-----------------------------------------------------------------------------------------------
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            var links = document.querySelectorAll('.navlink ul li a');
+        
+            links.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    if(this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                    }
+        
+                    localStorage.setItem('SignInUpPagelastClickedLinkId', this.id);
+                    localStorage.setItem('SignInUpPagelastClickedLinkHref', this.getAttribute('href'));
+                    localStorage.setItem('SignInUpPagelastClickedLinkText', this.innerText);
+        
+                });
+            });
+        });
+        
+        var SignInUpPagelastClickedLinkId = localStorage.getItem('SignInUpPagelastClickedLinkId');
+        var SignInUpPagelastClickedLinkHref = localStorage.getItem('SignInUpPagelastClickedLinkHref');
+        var SignInUpPagelastClickedLinkText = localStorage.getItem('SignInUpPagelastClickedLinkText');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            var links = document.querySelectorAll('.hamburger-dropdown li a:not(.social-icons > a)');
+        
+            links.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    if(this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                    }
+        
+                    localStorage.setItem('SignInUpPagelastClickedLinkId', this.id);
+                    localStorage.setItem('SignInUpPagelastClickedLinkHref', this.getAttribute('href'));
+                    localStorage.setItem('SignInUpPagelastClickedLinkText', this.innerText);
+        
+                    console.log('Stored in localStorage:', this.id, this.getAttribute('href'), this.innerText);
+                });
+            });
+        });
+        
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     var supportLink = document.querySelector('#support');
+        
+        //     supportLink.addEventListener('click', function(e) {
+        //         e.preventDefault();
+        
+        //         localStorage.setItem('SignInUpPagelastClickedLinkId', this.id);
+        //         localStorage.setItem('SignInUpPagelastClickedLinkHref', this.getAttribute('href'));
+        //         localStorage.setItem('SignInUpPagelastClickedLinkText', this.innerText);
+        
+        //         console.log('Stored in localStorage:', this.id, this.getAttribute('href'), this.innerText);
+        //     });
+        // });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            var footerLinks = document.querySelectorAll('.footer .nav_a');
+        
+            footerLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    if(this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                    }
+        
+                    localStorage.setItem('SignInUpPagelastClickedFooterLinkId', this.id);
+                    localStorage.setItem('SignInUpPagelastClickedFooterLinkHref', this.getAttribute('href'));
+                    localStorage.setItem('SignInUpPagelastClickedFooterLinkText', this.innerText);
+        
+                    console.log('Stored in localStorage:', this.id, this.getAttribute('href'), this.innerText);
+                });
+            });
+        });
+
+    </script>
+        
+              
+</body>
+</html>

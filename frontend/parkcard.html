@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="parkcard.css">
+    <script src="parkcard.js" defer></script>
+    <style>
+        table.profile {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        table.profile th, table.profile td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        table.profile th {
+            background-color: #f2f2f2;
+        }
+
+        .bttn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <table class="profile">
+        <tr>
+            <th>Ticket Number</th>
+            <td id="ticketNumber"> </td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td id="name"> </td>
+        </tr>
+        <tr>
+            <th>Car Number</th>
+            <td id="carNumber"></td>
+        </tr>
+        <tr>
+            <th>Booking Time</th>
+            <td id="bookingTime"></td>
+        </tr>
+        <tr>
+            <th>Payment</th>
+            <td id="payment"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="bttn-container">
+                <button class="bttn" onclick="removeProfile()">Remove</button>
+            </td>
+        </tr>
+    </table>
+    <script>
+        // script.js
+
+// Arrays of car numbers and names
+const car_numbers = [
+"RJ 82 EH 7007", "MP 47 MU 2372", "KA 23 OA 8369", "GJ 18 VK 3244",
+"RJ 59 BU 8383", "MH 12 ML 8779", "GJ 31 WT 1592", "TN 10 BB 6337",
+"KA 73 JG 3925", "MP 07 MS 9515", "MH 22 PU 4339", "KA 51 IA 6947",
+"RJ 13 HW 9434", "MP 86 BG 8250", "DL 31 CN 7106", "KA 15 XR 8804",
+"UP 68 GV 8424", "MP 99 IQ 6848", "WB 40 TO 9547", "TS 61 WK 3405",
+"TN 96 XM 3664", "UP 29 ZY 3570", "KA 86 WY 2533", "TS 32 NV 5335",
+"WB 88 TB 5031", "TS 96 AI 6413", "TN 39 IB 2697", "WB 42 GE 4827",
+"TS 12 FT 5030", "MH 66 MS 5993", "RJ 10 PW 7839", "KA 15 MF 4163",
+"RJ 86 PN 4598", "TN 84 QJ 9347", "WB 41 MF 7671", "KA 94 QP 1617",
+"TS 01 FR 8016", "KA 87 CY 5401", "DL 64 VA 7332", "UP 96 FA 1104",
+"GJ 57 GS 3828", "WB 06 WZ 8668", "KA 71 PI 3476", "MH 54 GI 9085",
+"MP 16 XY 1185", "WB 62 JF 8522", "MH 89 XZ 2067", "MP 53 LI 6071",
+"MP 46 PQ 8971", "GJ 92 KE 9785", "KA 69 WQ 9388", "MH 77 QD 9917",
+"KA 49 HC 4374", "WB 81 GO 1398", "KA 82 NU 4233", "RJ 10 YY 5690",
+"WB 76 PC 6356", "WB 25 CZ 5022", "MP 57 AO 7443", "GJ 62 UI 4214",
+"TS 43 RP 5303", "DL 75 VM 7788", "KA 04 AT 9468", "KA 69 EX 5843",
+"RJ 54 HU 3215", "MP 04 WS 6117", "RJ 39 VB 1599", "UP 88 CD 3872",
+"UP 23 AY 7480", "RJ 96 QS 2585", "UP 59 UE 6395", "KA 48 FD 8398",
+"TN 39 JX 5427", "UP 59 WL 9559", "DL 52 ES 7716", "TS 02 PJ 1278",
+"GJ 21 CQ 3319", "TS 73 LN 2161", "TS 16 UU 9200", "WB 63 XZ 5242",
+"TS 49 FD 6496", "TS 67 SW 9392", "DL 14 OP 8068", "WB 16 LQ 9275",
+"DL 97 RB 4477", "UP 44 RS 1885", "DL 49 SW 3619", "WB 79 BB 3537",
+"WB 92 JR 6972", "MP 69 OG 3833", "KA 89 IV 3094", "TS 57 SP 2817",
+"DL 53 RT 5644", "MP 27 LW 1831", "WB 75 PI 9114", "MP 36 SD 9797",
+"WB 91 OS 8397", "TS 77 TU 3580", "TN 57 HP 5680", "GJ 70 UU 3229"
+]
+;
+
+const names = [
+"Aarav", "Aditi", "Vijay", "Priya", "Suresh", "Anita", "Rohan", "Sneha",
+"Karan", "Isha", "Arjun", "Meera", "Nikhil", "Riya", "Amit", "Deepika",
+"Raj", "Kavita", "Sanjay", "Anjali", "Manish", "Pooja", "Vikas", "Shreya",
+"Aakash", "Neha", "Rahul", "Simran", "Varun", "Tanvi", "Vivek", "Yamini",
+"Abhishek", "Jaya", "Gaurav", "Komal", "Hitesh", "Lata", "Inder", "Madhavi",
+"Jay", "Nidhi", "Kunal", "Palak", "Lokesh", "Radhika", "Mohit", "Sapna",
+"Naveen", "Tara", "Omkar", "Usha", "Pranav", "Vasudha", "Rakesh", "Sunita",
+"Tejas", "Vidya", "Siddharth", "Ritu", "Tarun", "Vaishali", "Uday", "Shilpa",
+"Vinay", "Saloni", "Yogesh", "Bhavna", "Chetan", "Divya", "Eshwar", "Falguni",
+"Ganesh", "Hina", "Ishwar", "Janki", "Kailash", "Lalit", "Mohan", "Nalini",
+"Ojas", "Pavan", "Qadir", "Rajni", "Sohan", "Tanmay", "Urvashi", "Vijeta",
+"Wasim", "Xitij", "Yuvraj", "Zara", "Ameena", "Bhushan", "Charu", "Dinesh",
+"Ekta", "Farhan", "Gitanjali", "Hari", "Ila", "Jasmeet", "Kiran", "Lokendra",
+"Manoj", "Nimisha", "Oindrila", "Prateek", "Quasar", "Rashmi", "Sachin",
+"Tanuja", "Umesh", "Vinita", "Wahid", "Yasmin", "Zain"
+]
+;
+
+// Function to update the profile with random values
+function removeProfile() {
+const randomIndex = Math.floor(Math.random() * car_numbers.length);
+
+// Update the content of the profile with random values
+document.getElementById("ticketNumber").innerText = (randomIndex + 1);
+document.getElementById("name").innerText = names[randomIndex];
+document.getElementById("carNumber").innerText = car_numbers[randomIndex];
+document.getElementById("bookingTime").innerText = getRandomBookingDate();
+document.getElementById("payment").innerText = "$" + getRandomPaymentAmount();
+}
+
+// Function to generate a random booking date
+function getRandomBookingDate() {
+const year = 2024;
+const month = 3;
+const day = Math.floor(Math.random() * 30) + 1; 
+return year + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
+}
+
+// Function to generate a random payment amount
+function getRandomPaymentAmount() {
+return (Math.floor(Math.random() * 50) + 20) + ".00";
+}
+    </script>
+</body>
+</html>
